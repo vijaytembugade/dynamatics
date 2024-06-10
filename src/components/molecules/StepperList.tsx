@@ -4,7 +4,8 @@ import { Heading } from "../typography/Heading";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
+  justify-content: flex-start;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 1px;
@@ -23,13 +24,13 @@ const Step = styled.div`
 `;
 
 const StepNumber = styled.div`
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: bold;
   margin-right: 10px;
 `;
 
 const StepLabel = styled.div`
-  font-size: 16px;
+  font-size: 0.9rem;
 `;
 
 const Line = styled.div`
@@ -39,19 +40,26 @@ const Line = styled.div`
   margin-top: 10px;
 `;
 
-const Stepper = ({ heading }) => {
-  const steps = [{ label: "User 1" }, { label: "User 2" }, { label: "User 3" }];
+type PropTypes = {
+  heading: string;
+  steps?: {
+    value: string;
+    count: number;
+  }[];
+};
 
+const Stepper = ({ heading, steps }: PropTypes) => {
   return (
     <Container>
       <Heading>{heading} </Heading>
-      {steps.map((step, index) => (
-        <Step key={index}>
-          <StepNumber>{index + 1}</StepNumber>
-          <StepLabel>{step.label}</StepLabel>
-          {index < steps.length - 1}
-        </Step>
-      ))}
+      {steps &&
+        steps.map((step, index) => (
+          <Step key={step.value}>
+            <StepNumber>{index + 1}.</StepNumber>
+            <StepLabel>{step?.value}</StepLabel>
+            {index < steps.length - 1}
+          </Step>
+        ))}
     </Container>
   );
 };

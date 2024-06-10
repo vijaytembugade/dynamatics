@@ -1,21 +1,20 @@
-import React from "react";
 import { Chart } from "chart.js";
 import { Line } from "react-chartjs-2";
 
 import {
   CategoryScale,
+  Legend,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
 } from "chart.js";
-import { Heading } from "../typography/Heading";
 import styled from "styled-components";
+import { Heading } from "../typography/Heading";
 
-import { FillColor, Label } from "../../types";
 import useTwoValueDayWiseCompareData from "../../hooks/useTwoValueDayWiseCompareData";
+import { FillColor, Label } from "../../types";
 Chart.register(
   CategoryScale,
   LinearScale,

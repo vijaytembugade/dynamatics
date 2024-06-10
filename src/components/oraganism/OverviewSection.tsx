@@ -7,6 +7,8 @@ import InsidentAlertVSResolvedGraph from "../molecules/InsidentAlertVSResolvedGr
 import PROpenedVsPRMergedGraphDayWise from "../molecules/PROpenedVsPRMergedGraphDayWise";
 import useGetTotalCount from "../../hooks/useGetTotalCount";
 import { Label } from "../../types";
+import useCalculateTop from "../../hooks/useCalculateTop";
+import CommitsDayWiseGraph from "../molecules/CommitsDayWiseGraph";
 
 const FlexDiv = styled.div`
   display: flex;
@@ -29,6 +31,10 @@ const OverviewSection = () => {
   const totalMergedPr = useGetTotalCount(Label.PRMerged);
   const totalIncidentResolved = useGetTotalCount(Label.IncidentsResolved);
 
+  const topPrReviewed = useCalculateTop(Label.PRReviewed);
+  const topPrCommenters = useCalculateTop(Label.PRComments);
+  const topIncidentResolver = useCalculateTop(Label.IncidentsResolved);
+
   return (
     <FlexVDiv>
       <FlexDiv>
@@ -40,19 +46,20 @@ const OverviewSection = () => {
         />
       </FlexDiv>
       <FlexDiv>
+        <PROpenedVsPRMergedGraphDayWise />
+      </FlexDiv>
+      <FlexDiv>
+        <Stepper steps={topPrReviewed} heading="Top PR reviewer" />
+        <Stepper steps={topPrCommenters} heading="Top PR Commenters" />
+        <Stepper steps={topIncidentResolver} heading="Top Incident Resolver" />
+      </FlexDiv>
+      <FlexDiv>
         <StripComponent
           text="Total Incident resolved"
           value={totalIncidentResolved}
         />
-      </FlexDiv>
-      <FlexDiv>
-        <Stepper heading="Top 3 PR reviewer" />
-        <Stepper heading="Top 3 PR Merger" />
-        <Stepper heading="Top 3 Incident Resolver" />
-      </FlexDiv>
-      <FlexDiv>
         <InsidentAlertVSResolvedGraph />
-        <PROpenedVsPRMergedGraphDayWise />
+        <CommitsDayWiseGraph />
       </FlexDiv>
     </FlexVDiv>
   );
