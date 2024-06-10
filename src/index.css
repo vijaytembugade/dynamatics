@@ -1,0 +1,28 @@
+@import url("./css/reset.css");
+
+:root{
+  --primaryColor: #4040d4;
+  --textColor: #1d201e;
+  --bgWColor: #F8F8FF;
+  --bgColor: #f7f7f7;
+  --secondaryTextColor: #8D818C;
+  --secondaryColor: #EF626C;
+}
+
+body {
+  background-color: var(---bgWColor);
+  font-size: calc(100% + 0.390625vw);
+  color: var(--textColor);
+  font-family: 'Poppins', sans-serif;
+}
+
+.container{
+  margin: 0rem 9rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    margin: 1rem 1rem;
+  }
+}
+
