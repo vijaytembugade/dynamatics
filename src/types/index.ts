@@ -31,6 +31,7 @@ export enum Label {
     PRMerged = "PR Merged",
     PROpen = "PR Open",
     PRReviewed = "PR Reviewed",
+    Name = "name"
 }
 
 export type Row = {
@@ -64,4 +65,14 @@ export type Child = {
 export type TotalActivity = {
     name?: Label;
     value?: string;
+}
+
+export enum TabRoutes {
+    users = "users",
+    overview = "overview",
+    timeline = "timeline"
+}
+
+export type GridRow = {
+    [key in Label]?: string;
 }

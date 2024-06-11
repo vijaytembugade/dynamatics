@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import IconHistory from "../../assets/HistoryIcon";
+
 import { Text } from "../typography/Text";
+import { Link, useLocation } from "react-router-dom";
 
 const SidebarContainer = styled.div`
   margin-top: 2.5rem;
@@ -41,7 +42,10 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ tabs }) => {
-  const [activeTab, setActiveTab] = useState(tabs[0].name);
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.pathname.split("/")[1]);
+
+  console.log(location);
 
   const handleTabClick = (tab: Tab) => {
     setActiveTab(tab.name);
@@ -52,14 +56,16 @@ const Sidebar: React.FC<Props> = ({ tabs }) => {
       {tabs.map((tab) => {
         const Icon = tab.icon;
         return (
-          <TabButton
-            key={tab.name}
-            active={activeTab === tab.name}
-            onClick={() => handleTabClick(tab)}
-          >
-            <Icon width="1.3rem" height="1.3rem" />
-            <Text>{tab.name}</Text>
-          </TabButton>
+          <Link to={tab.name}>
+            <TabButton
+              key={tab.name}
+              active={activeTab === tab.name}
+              onClick={() => handleTabClick(tab)}
+            >
+              <Icon width="1.3rem" height="1.3rem" />
+              <Text>{tab.name}</Text>
+            </TabButton>
+          </Link>
         );
       })}
     </SidebarContainer>

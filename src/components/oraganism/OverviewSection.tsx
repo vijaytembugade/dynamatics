@@ -10,7 +10,7 @@ import { Label } from "../../types";
 import useCalculateTop from "../../hooks/useCalculateTop";
 import CommitsDayWiseGraph from "../molecules/CommitsDayWiseGraph";
 
-const FlexDiv = styled.div`
+export const FlexDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -18,7 +18,7 @@ const FlexDiv = styled.div`
   flex-wrap: wrap;
 `;
 
-const FlexVDiv = styled.div`
+export const FlexVDiv = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
