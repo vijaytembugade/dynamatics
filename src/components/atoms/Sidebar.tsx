@@ -48,7 +48,9 @@ interface Props {
 
 const Sidebar: React.FC<Props> = ({ tabs }) => {
   const location = useLocation();
-  const [activeTab, setActiveTab] = useState(location.pathname.split("/")[1]);
+  const [activeTab, setActiveTab] = useState(
+    location.pathname.split("/")[1] || tabs[0].name
+  );
 
   console.log(location);
 
