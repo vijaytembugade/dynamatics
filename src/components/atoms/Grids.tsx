@@ -3,6 +3,7 @@ import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied
 import { AgGridReact } from "ag-grid-react"; // React Data Grid Component
 
 import { ColDef } from "ag-grid-community";
+import { memo } from "react";
 type GridProps = {
   row: unknown[];
   columns: ColDef<unknown>[];
@@ -30,4 +31,4 @@ const Grid = (props: GridProps) => {
   );
 };
 
-export default Grid;
+export default memo(Grid);

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Heading } from "../typography/Heading";
 import IconLink from "../../assets/LinkIcon";
+import { memo } from "react";
 
 const Card = styled.div`
   background-color: #f7f7f7;
@@ -38,4 +39,4 @@ const CardComponent = ({ heading, value }: PropTypes) => (
   </Card>
 );
 
-export default CardComponent;
+export default memo(CardComponent);

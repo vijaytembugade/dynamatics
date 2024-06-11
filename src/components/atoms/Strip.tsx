@@ -1,7 +1,7 @@
-import React from "react";
 import styled from "styled-components";
-import { Text } from "../typography/Text";
 import { FillColor } from "../../types";
+import { Text } from "../typography/Text";
+import { memo } from "react";
 
 const Strip = styled.div`
   background-color: var(--bgColor);
@@ -29,4 +29,4 @@ const StripComponent = (props: PropsType) => {
   );
 };
 
-export default StripComponent;
+export default memo(StripComponent);

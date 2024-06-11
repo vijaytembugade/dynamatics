@@ -49,7 +49,7 @@ export const options = {
     mode: "index",
   },
 };
-const InsidentAlertVSResolvedGraph = (props: Props) => {
+const InsidentAlertVSResolvedGraph = () => {
   const [IncidentAlertsObj, IncidentsResolvedObj] =
     useTwoValueDayWiseCompareData(
       Label.IncidentAlerts,
@@ -68,7 +68,6 @@ const InsidentAlertVSResolvedGraph = (props: Props) => {
           labels: [...Object.keys(IncidentAlertsObj)],
           datasets: [
             {
-              id: 1,
               label: Label.IncidentAlerts,
               borderColor: FillColor.IncidentAlertsColor,
               backgroundColor: FillColor.IncidentAlertsColor,
@@ -80,7 +79,6 @@ const InsidentAlertVSResolvedGraph = (props: Props) => {
             },
             {
               label: "Insident Resolved",
-              id: 2,
               data: Object.keys(IncidentsResolvedObj).map(
                 (item: keyof typeof IncidentsResolvedObj) => {
                   return IncidentsResolvedObj[item]?.count;

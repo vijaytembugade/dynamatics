@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import useGenerateGridForAllData from "../../hooks/useGenerateGridForAllData";
 import Grid from "../atoms/Grids";
 import Search from "../atoms/Search";
@@ -38,4 +38,4 @@ const TotalUserData = () => {
   );
 };
 
-export default TotalUserData;
+export default memo(TotalUserData);

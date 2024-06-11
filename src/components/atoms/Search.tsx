@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import styled from "styled-components";
 
 const SearchBar = styled.div`
@@ -19,16 +19,6 @@ const SearchInput = styled.input`
   &:focus {
     outline: none;
   }
-`;
-
-const SearchButton = styled.button`
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 `;
 
 type PropsType = {
@@ -54,4 +44,4 @@ function Search(props: PropsType) {
   );
 }
 
-export default Search;
+export default memo(Search);

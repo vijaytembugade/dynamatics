@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Text } from "../typography/Text";
+import { memo } from "react";
 
 const NavbarContainer = styled.nav`
   display: flex;
@@ -21,11 +22,11 @@ const Navbar = () => {
   return (
     <NavbarContainer>
       <NavbarTitle href="#">
-        <Text>Dynamics</Text>
+        <Text>Dynamatics</Text>
       </NavbarTitle>
       {/* Add additional navbar items if needed */}
     </NavbarContainer>
   );
 };
 
-export default Navbar;
+export default memo(Navbar);

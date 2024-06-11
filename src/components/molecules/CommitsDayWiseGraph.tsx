@@ -1,7 +1,8 @@
 import { Chart } from "chart.js";
-import { Bar, Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 import {
+  BarElement,
   CategoryScale,
   Legend,
   LinearScale,
@@ -9,7 +10,6 @@ import {
   PointElement,
   Title,
   Tooltip,
-  BarElement,
 } from "chart.js";
 import styled from "styled-components";
 import { Heading } from "../typography/Heading";
@@ -51,7 +51,7 @@ export const options = {
     mode: "index",
   },
 };
-const CommitsDayWiseGraph = (props: Props) => {
+const CommitsDayWiseGraph = () => {
   const [keyOne] = useTwoValueDayWiseCompareData(Label.Commits, Label.PROpen);
   console.log(keyOne);
 
@@ -65,12 +65,11 @@ const CommitsDayWiseGraph = (props: Props) => {
           labels: [...Object.keys(keyOne)],
           datasets: [
             {
-              id: 1,
               label: Label.Commits,
               borderColor: FillColor.CommitsColor,
               backgroundColor: FillColor.CommitsColor,
-              data: Object.keys(keyOne).map((item: keyof typeof keyOne) => {
-                return keyOne[item]?.count;
+              data: Object.keys(keyOne).map((item) => {
+                return keyOne && item ? keyOne[item]?.count : null;
               }),
             },
           ],

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Heading } from "../typography/Heading";
+import { memo } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -64,4 +65,4 @@ const Stepper = ({ heading, steps }: PropTypes) => {
   );
 };
 
-export default Stepper;
+export default memo(Stepper);

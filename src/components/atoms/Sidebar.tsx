@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { memo, useState } from "react";
 import styled from "styled-components";
 
-import { Text } from "../typography/Text";
 import { Link, useLocation } from "react-router-dom";
+import { Text } from "../typography/Text";
 
 const SidebarContainer = styled.div`
   margin-top: 2.5rem;
@@ -16,7 +16,12 @@ const SidebarContainer = styled.div`
   padding: 20px;
 `;
 
-const TabButton = styled.button`
+interface TProps {
+  active: boolean;
+  onClick?: Function;
+}
+
+const TabButton = styled.button<TProps>`
   display: flex;
   width: 100%;
   padding: 10px;
@@ -72,4 +77,4 @@ const Sidebar: React.FC<Props> = ({ tabs }) => {
   );
 };
 
-export default Sidebar;
+export default memo(Sidebar);

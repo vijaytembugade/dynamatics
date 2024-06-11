@@ -13,7 +13,11 @@ const TabList = styled.ul`
   margin: 0;
 `;
 
-const TabItem = styled.li`
+type TabItemProps = {
+  active: boolean;
+};
+
+const TabItem = styled.li<TabItemProps>`
   padding: 10px 20px;
   cursor: pointer;
   border-bottom: ${(props) =>
@@ -27,10 +31,10 @@ const TabPanel = styled.div`
   width: 100%;
 `;
 
-const Tabs = ({ children }) => {
+const Tabs = ({ children }: { children: JSX.Element }) => {
   const [activeTab, setActiveTab] = useState(0);
 
-  const handleTabClick = (index) => {
+  const handleTabClick = (index: number) => {
     setActiveTab(index);
   };
 
@@ -52,4 +56,4 @@ const Tabs = ({ children }) => {
   );
 };
 
-export default Tabs;
+export default memo(Tabs);

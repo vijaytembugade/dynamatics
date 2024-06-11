@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import useGenerateColumnAndrowsForGrids from "../../hooks/useGenerateColumnAndrowsForGrids";
 import Button from "../atoms/Button";
 import Grid from "../atoms/Grids";
@@ -43,4 +43,4 @@ const UserWiseTotalData = () => {
   );
 };
 
-export default UserWiseTotalData;
+export default memo(UserWiseTotalData);

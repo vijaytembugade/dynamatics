@@ -3,7 +3,7 @@ import IconGroupOutline from "../../assets/GroupIcon";
 import IconHistory from "../../assets/HistoryIcon";
 import IconUser from "../../assets/UserIcon";
 import Navbar from "../atoms/NavBar";
-import Sidebar from "../atoms/Sibdbar";
+import Sidebar from "../atoms/Sidebar";
 import OverviewSection from "../oraganism/OverviewSection";
 import UserDetails from "../oraganism/UserDetails";
 
