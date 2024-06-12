@@ -11,6 +11,7 @@ const useGenerateColumnAndrowsForGrids = () => {
   });
 
   columns?.unshift({ field: "name", minWidth: 140 });
+  columns?.push({ field: "activeDays", minWidth: 140 });
 
   const rows: GridRow[] = [];
   data?.AuthorWorklog?.rows?.forEach((item) => {
@@ -21,7 +22,11 @@ const useGenerateColumnAndrowsForGrids = () => {
       return acc;
     }, {} as GridRow);
 
-    rows.push({ ...activity, name: item.name });
+    rows.push({
+      ...activity,
+      name: item.name,
+      activeDays: String(item.activeDays.days),
+    });
   });
 
   console.log(columns);

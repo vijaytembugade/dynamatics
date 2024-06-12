@@ -16,6 +16,7 @@ import { Heading } from "../typography/Heading";
 
 import useTwoValueDayWiseCompareData from "../../hooks/useTwoValueDayWiseCompareData";
 import { FillColor, Label } from "../../types";
+import Card from "../atoms/Card";
 Chart.register(
   CategoryScale,
   LinearScale,
@@ -53,29 +54,42 @@ export const options = {
 };
 const CommitsDayWiseGraph = () => {
   const [keyOne] = useTwoValueDayWiseCompareData(Label.Commits, Label.PROpen);
-  console.log(keyOne);
+
+  const totalCommits = Object.keys(keyOne).reduce((acc, curr) => {
+    if (keyOne[curr] && keyOne[curr]?.count) {
+      return acc + keyOne[curr]?.count;
+    }
+    return acc;
+  }, 0);
 
   return (
-    <Container>
-      <Heading>Commits (Daywise)</Heading>
-      <Bar
-        options={options}
-        datasetIdKey="CommitsDayWiseGraph"
-        data={{
-          labels: [...Object.keys(keyOne)],
-          datasets: [
-            {
-              label: Label.Commits,
-              borderColor: FillColor.CommitsColor,
-              backgroundColor: FillColor.CommitsColor,
-              data: Object.keys(keyOne).map((item) => {
-                return keyOne && item ? keyOne[item]?.count : null;
-              }),
-            },
-          ],
-        }}
+    <>
+      <Card
+        heading="Avg commits per day"
+        value={Number((totalCommits / Object.keys(keyOne).length).toFixed(0))}
       />
-    </Container>
+      <Card heading="Total Commits" value={totalCommits} />
+      <Container>
+        <Heading>Commits (Daywise)</Heading>
+        <Bar
+          options={options}
+          datasetIdKey="CommitsDayWiseGraph"
+          data={{
+            labels: [...Object.keys(keyOne)],
+            datasets: [
+              {
+                label: Label.Commits,
+                borderColor: FillColor.CommitsColor,
+                backgroundColor: FillColor.CommitsColor,
+                data: Object.keys(keyOne).map((item) => {
+                  return keyOne && item ? keyOne[item]?.count : null;
+                }),
+              },
+            ],
+          }}
+        />
+      </Container>
+    </>
   );
 };
 

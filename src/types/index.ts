@@ -31,7 +31,8 @@ export enum Label {
     PRMerged = "PR Merged",
     PROpen = "PR Open",
     PRReviewed = "PR Reviewed",
-    Name = "name"
+    Name = "name",
+    activeDays = "activeDays"
 }
 
 export type Row = {

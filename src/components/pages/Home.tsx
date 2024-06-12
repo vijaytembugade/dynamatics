@@ -10,7 +10,6 @@ import UserDetails from "../oraganism/UserDetails";
 const tabs = [
   { name: TabRoutes.overview, icon: IconGroupOutline },
   { name: TabRoutes.users, icon: IconUser },
-  { name: TabRoutes.timeline, icon: IconHistory },
 ];
 
 const MainSection = styled.div`
@@ -19,10 +18,22 @@ const MainSection = styled.div`
   margin-bottom: 5rem;
 `;
 
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+  useNavigate,
+} from "react-router-dom";
 import { TabRoutes } from "../../types";
+import { useEffect } from "react";
 
 const Main = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/overview");
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -42,10 +53,6 @@ const router = createBrowserRouter([
       {
         path: "overview",
         element: <OverviewSection />,
-      },
-      {
-        path: "timeline",
-        element: <>This is timeline</>,
       },
       {
         path: "users",

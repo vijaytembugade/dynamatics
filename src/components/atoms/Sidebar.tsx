@@ -52,8 +52,6 @@ const Sidebar: React.FC<Props> = ({ tabs }) => {
     location.pathname.split("/")[1] || tabs[0].name
   );
 
-  console.log(location);
-
   const handleTabClick = (tab: Tab) => {
     setActiveTab(tab.name);
   };

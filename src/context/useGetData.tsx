@@ -17,7 +17,7 @@ export const DataContextProvider = ({
   useEffect(() => {
     const fetchData = async () => {
       // this is dummy data fetched through fetch api but if live api comes we can add here
-      const res = await fetch("sample_data/sample_data.json");
+      const res = await fetch("../../src/sample_data/sample_data.json");
       const result: TResultDataType = await res.json();
 
       if (result && result?.data) {

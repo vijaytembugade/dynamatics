@@ -19,7 +19,11 @@ const useGenerateGridForAllData = () => {
       activity?.items?.children.forEach((child) => {
         emptyObj[child.label] = child.count;
       });
-      rows.push({ ...emptyObj, name: item.name, date: activity.date });
+      rows.push({
+        ...emptyObj,
+        name: item.name,
+        date: activity.date,
+      });
     });
   });
 
