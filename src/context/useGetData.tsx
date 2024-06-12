@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { TResultDataType } from "../types";
+import json from "../sample_data/sample_data.json";
 
 interface ContextType {
   data?: TResultDataType | null;
@@ -17,8 +18,9 @@ export const DataContextProvider = ({
   useEffect(() => {
     const fetchData = async () => {
       // this is dummy data fetched through fetch api but if live api comes we can add here
-      const res = await fetch("../../src/sample_data/sample_data.json");
-      const result: TResultDataType = await res.json();
+      // const res = await fetch("../../src/sample_data/sample_data.json");
+      // const result: TResultDataType = await res.json();
+      const result = json;
 
       if (result && result?.data) {
         setData(result?.data);
